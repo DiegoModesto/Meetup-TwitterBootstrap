@@ -1,0 +1,149 @@
+<!-- Este exempli irá mostrar os pontos cegos
+que qualquer frond end tem ao usar o 
+Grid System do bootstrap. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meetup - Twitter Bootstrap Exemplo 01</title>
+    <link rel="stylesheet" href="../Assets/css/bootstrap.min.css" />
+    <style type="text/css">
+      .margem-baixo-15{margin-bottom:15px;}
+      .fonte-branca{color:#FFF;}
+
+      /*Irá apenas montar as bordas com cores*/
+      .borda-azul{border:1px solid blue;}
+      .borda-vermelha{border:1px solid red;}
+      .borda-roxa{border:1px solid purple;}
+      
+      .fundo-azul{background-color:blue;}
+      .fundo-vermelha{background-color:red;}
+      .fundo-roxa{background-color:purple;}
+
+      /*Redimencione a tela de seu navegador, e repare as alterações que são efetuadas
+      com as bordas inseridas. Caso esteja usando o Google Chrome v23 ou superior,
+      no modo Develoepr Tools (F12), no canso superior direito, irá aparecer o número com o tamanho da tela.*/
+
+
+      /*Agora as bordas mudam de acordo com o tamanho da tabela*/
+      @media(min-width: 992px)
+      {
+        .borda-azul{border-width:5px;}
+        .borda-vermelha{border-width:5px;}
+        .borda-roxa{border-width:5px;}
+      }
+      /*Este é para telas bem pequenas, repare no nome MAX-WIDH*/
+      @media(max-width: 700px)
+      {
+        .borda-azul{border-width:10px;}
+        .borda-vermelha{border-width:10px;}
+        .borda-roxa{border-width:10px;}
+      }
+    </style>
+  </head>
+  <body>
+    
+      <!-- Iniciando Container. Lembre-se, esta div contém
+      toda estrutuda dos arquivos CSS, com ela será possível
+      renderizar o restante dos componentes -->
+      <div class="container">
+      <!-- A classe ROW representa a linha do grid, lembre-se
+      que o Grid System do bootstrap funciona como uma tabela,
+      havendo linhas e colunas. -->
+        <div class="row">
+        <!-- Agora temos uma linha, e dentro da mesma coloco uma coluna com 12 espaços -->
+          <div class="col-xs-6 col-md-12">
+            <h2 class="borda-azul">Cabeçalho 1</h2>
+          </div>
+          <div class="col-xs-6 col-md-12">
+            <h2 class="borda-vermelha">Cabeçalho 2</h2>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="container fundo-roxa margem-baixo-15">
+      <!-- Agora este item contém um container FLUIDO.
+      Para que as linhas sigam a mesma forma, note que insiro uma linha dentro de uma div para que ele siga seu filho.  -->
+        
+        <!--  SEM LINHA -->
+        <div class="row fonte-branca">
+          <div class="col-md-6">
+            <div class="col-md-6 fundo-azul">
+                <p>Linha</p>
+              </div>
+            <div class="col-md-6 fundo-vermelha">
+                <p>Linha</p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repare que este item não contém MARGEM nos cantos como o item acima.
+      Isso se dá ao fato da div com a classe ROW inserida -->
+      <div class="container fundo-roxa margem-baixo-15">
+        <!--  COM LINHA -->
+        <div class="row">
+          <div class="col-md-6 fonte-branca">
+            <div class="row">
+              <div class="col-md-6 fundo-azul">
+                <p>Linha</p>
+              </div>
+              <div class="col-md-6 fundo-vermelha">
+                <p>Linha</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Agora, este item irá fazer um container fixo. Respondendo uma pergunda feita no meetup,
+      o container normal tem um tamanho máximo de 1170px, já o fluído é 100%. Só que, o fluid tem um
+      padding de 15px em cada lado, para garantir um tamanho mais interessante da página, que pode ser 
+      alterado caso necessário.
+      Outro detalhe, a classe ROW contém uma margem negativa de 15px em cada lado, ou seja,
+      o container-fluid e o row, juntos, ficam alinhados ao final da tela, porém, o texto não 
+      fica GRUDADO com o final, sendo assim, o texto fica mais legível. -->
+      <div class="container-fluid fundo-roxa margem-baixo-15">
+        <!--  COM LINHA -->
+        <div class="row">
+          <div class="col-md-6 fonte-branca">
+            <div class="row">
+              <div class="col-md-6 fundo-azul">
+                <p>Linha</p>
+              </div>
+              <div class="col-md-6 fundo-vermelha">
+                <p>Linha</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Agora, quando o assunto é layout responsivo, temos este item que é importante.
+      Note que ao diminuir o tamanho da tela, a segunda linha desaparece.
+      Isso se dá ao fato do prefixo XS fazer HIDE para determinado tamanho.
+      Mas também, quando está em tamanho de TABLET, a linha 1 some e mantém a 2.-->
+      <div class="container fundo-roxa margem-baixo-15">
+        <!--  COM LINHA -->
+        <div class="row">
+          <div class="col-md-6 fonte-branca">
+            <div class="row">
+              <div class="hidden-sm col-md-6 fundo-azul">
+                <p>Linha 1</p>
+              </div>
+              <div class="hidden-xs col-md-6 fundo-vermelha">
+                <p>Linha 2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script type="text/javascript" src="../Assets/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../Assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

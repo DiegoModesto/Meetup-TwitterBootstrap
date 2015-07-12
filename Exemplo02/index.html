@@ -1,0 +1,83 @@
+<!-- Este exemplo irá mostrar alguns eventos
+que são utilizados dentro dos componentes javascript
+do bootstrap.
+Junto também a utilização do Font-Awesome -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meetup - Twitter Bootstrap Exemplo 01</title>
+    <link rel="stylesheet" href="../Assets/css/bootstrap.min.css" />
+    <!-- Veja que para funcionar o Font-Awesome, apenas precisei chamar o CSS do mesmo aqui.
+    Veja mais aqui: http://fortawesome.github.io/Font-Awesome/ -->
+    <link rel="stylesheet" href="../Assets/font-awesome/css/font-awesome.min.css" />
+    <style type="text/css">
+      .margem-superior-50{margin-top:50px;}
+    </style>
+  </head>
+  <body>
+    <div class="container margem-superior-50">
+      <!--
+      
+      -->
+      <div clas="row">
+        <div class="col-md-6">
+          <!-- Apenas o item I com a classe FA e FA-* do Font-Awesome são necessários para que o mesmo funcione.
+          Lembrando que, o * é para inserir o NOME do ícone. (Não confunda no site quando tiver escrito ALIAS, significa que o nome compelto não é este.).
+          O botão de popover é chamado aqui, e não se desabilita sozinho. -->
+          <button type="button" class="Kakaroto btn btn-lg btn-danger" data-toggle="popover" title="Oi, eu sou o Goku." data-content="Veja como é simples chamar um popover do bootstrap."><i class="fa fa-beer"> </i>Clique para aparecer o Popover</button>
+        </div>
+        <div class="col-md-6">
+          <!-- Já este aqui é desabilitado sozinho.
+          A única coisa necessárioa para o Popover desaparecer sozinho, é o Data-Trigger. Este gatilho já basta para fazê-lo,
+          e não é necessário configurar mais nada. -->
+          <button type="button" class="Kakaroto btn btn-lg btn-danger" data-toggle="popover" title="Oi, eu sou o Goku." data-content="Veja como é simples chamar um popover do bootstrap."  data-trigger="focus"><i class="fa fa-beer"> </i>Clique para aparecer o Popover</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container margem-superior-50">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" id="drp" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Clique em mim.
+              <i class="fa fa-caret-square-o-down"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="drp">
+              <li><a href="#">Eu sou um item.</a></li>
+              <li><a href="#">Eu também sou um item.</a></li>
+              <li><a href="#">Não estou de fora.</a></li>
+              <li><a href="#">Muito menos eu.</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sou EMO, não me misturo.</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="../Assets/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../Assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      //Infelizmente, o Popover necessita ser chamado por javascript. Pode-se chamar via Classe, ID, ou até mesmo Data-Roles.
+      $('.Kakaroto').popover();
+      //Este evento é chamado ASSIM que o botão é clicado.
+      //Lembre-se: existe diferença entre SHOW e SHOWN
+      //SHOW  -> Assim que o evento é chamado
+      //SHOWN -> Assim que a transação do CSS é finalizado para o usuário.
+      $('.Kakaroto').on('show.bs.popover', function(){
+        alert('Teste');
+      });
+
+      //Veja neste item: http://getbootstrap.com/javascript/#dropdowns-events
+      //Ele diz que o item de DROPDOWN irá disparar o evento chamando o item
+      //PAI sobre ele, que no caso é a div com classe DropDown.
+      $('.dropdown').on('shown.bs.dropdown', function(){
+        alert('Teste');
+      });
+    </script>
+  </body>
+</html>
